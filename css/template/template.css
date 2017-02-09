@@ -8,16 +8,53 @@ body{
   border:solid 1px red;
 }
 
+
 #headerback{
-    background-color: gray;
-    height: 100vh;
-    width: 100%;
-    background-color: gray;
-    position: absolute;
-    left: 0px;
-    top:0px;
+  background-color: gray;
+  height: 100vh;
+  width: 100%;
+  background-color: gray;
+  position: absolute;
+  left: 0px;
+  top:0px;
 }
 
 #headerContent{
-    height: 100vh;
+  height: 100vh;
+}
+
+#pageLogoTitleContainerParent{
+  text-align: center;
+  width: 1005;
+}
+
+#pageLogoTitleContainer{
+   height: 80vh;
+   width: 100%;
+   display: table;
+   table-layout: fixed;
+}
+
+#pageLogoTitleContainerChild{
+   display:table-cell;
+   vertical-align:middle;
+   text-align:center;
+}
+
+#pageLogoTitle{
+   font-family: 'Lobster', cursive;
+   animation-duration: 1s;
+   animation-name: titleAppear;
+   margin: auto;
+   font-size: 60px;
+}
+
+/*Animations*/
+@keyframes titleAppear {
+  from {
+    font-size: 10px;
+  }
+  to {
+    font-size: 60px;
+  }
 }

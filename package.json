@@ -1,0 +1,22 @@
+{
+  "name": "spashoppingcarthz",
+  "version": "0.0.1",
+  "description": "Simple Angular TODO app based in MEAN stack",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~3.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heinnerzapata/SPA_ShoppingCart_HZ.git"
+  },
+  "author": "Heinner Zapata",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heinnerzapata/SPA_ShoppingCart_HZ/issues"
+  },
+  "homepage": "https://github.com/heinnerzapata/SPA_ShoppingCart_HZ#readme"
+}

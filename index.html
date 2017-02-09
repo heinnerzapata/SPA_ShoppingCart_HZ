@@ -4,12 +4,53 @@
  <head>
 
    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--Header-->
+   <div ng-include="'views/template/header.html'"></div>
+   <!--/Header-->
+
+
    <title>SPA Shopping Cart HZ</title>
 
- </head>
- <body>
+   <!--Boostrap3-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+   <!--/Boostrap3-->
 
-   <h1>HZ</h1>
+   <!--TemplateCss-->
+   <link rel="stylesheet" type="text/css" href="css/template/template.css">
+  <!--/TemplateCss-->
+
+ </head>
+ <body ng-app="mainApp" ng-controller='homeController'>
+
+  <!--Views-->
+  <div ng-view></div>
+  <!--/Views-->
+
+  <!--Jquery-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!--/Jquery-->
+
+  <!--Boostrap3-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--/Boostrap3-->
+
+  <!--AngularJs 1.6-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js"></script>
+  <!--/AngularJs 1.6-->
+
+  <!--Controllers-->
+  <script src="controllers/app.js"></script>
+  <!--/Controllers-->
+
+
+  <script type="text/javascript">
+
+
+
+  </script>
 
  </body>
 

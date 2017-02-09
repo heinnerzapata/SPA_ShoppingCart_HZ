@@ -16,7 +16,7 @@ mainApp.config(function($routeProvider , $locationProvider){
 
  });
 
-
+// Controllers
  mainApp.controller('homeController',function homeController($scope,$http) {
 
 

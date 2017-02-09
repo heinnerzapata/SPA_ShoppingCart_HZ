@@ -2,6 +2,7 @@ body{
   margin:0;
   padding: 0;
   color:white;
+  font-family: 'Maven Pro', sans-serif;
 }
 
 .border{
@@ -106,6 +107,31 @@ body{
   cursor: pointer;
 }
 
+#imgFoodConatiner1{
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  transform:rotate(-45deg);
+  -ms-transform:rotate(-45deg);
+  -webkit-transform:rotate(-45deg);
+
+
+}
+
+.imgFoodConatiner1_P1{
+  left: -100px;
+  top:-100px;
+
+}
+
+.imgFoodConatiner1_P2{
+  left: 200px;
+  top:300px;
+  -webkit-transition: left 0.5s , top 0.5s; /* For Safari 3.1 to 6.0 */
+  transition: left 0.5s , top 0.5s;;
+
+}
+
 
 /*Animations*/
 @keyframes titleAppear {
@@ -163,6 +189,11 @@ body{
   #headerMenu li{
     display: block;
     margin-left: 0px;
+    border-bottom: solid 2px white;
+  }
+
+  #headerMenu li:first-child{
+   border-top: solid 2px white;
   }
 
   #headerMenu li a{

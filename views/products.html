@@ -15,6 +15,50 @@
 	</section>
 	<!--HomeServiceOptions-->
 
+	<!--Filters-->
+	<section id="sectionFilters">
+		
+		<div class="container">
+
+			<div class="row text-center data-source">
+				
+				<div class="col-xs-12 col-lg-4">
+					<h1 class="titlePart">Data source</h1>
+				</div>
+
+				<div class="col-xs-12 col-lg-8 text-left">
+					
+					<div class="radio">
+						  <label class="lbl-radio"><input class="rdn-source" type="radio" ng-model="productSource" value="local"><span class="spanTextRadio">Local</span></label>
+					</div>
+
+					<div class="radio">
+					  <label class="lbl-radio"><input class="rdn-source" type="radio" ng-model="productSource" value="extern"><span class="spanTextRadio">Extern</span></label>
+					</div>					
+
+				</div>
+			</div>
+			<div class="row text-center">
+
+				<div class="col-xs-12 col-lg-10">
+					<div class="form-group">
+				      <label for="usr">Fuente:</label>
+  					  <input type="text" class="form-control" id="pathSource" placeholder="URL Path">
+				    </div>
+				</div>
+
+				<div class="col-xs-12 col-lg-2">
+					<button id="btn-search" type="submit" class="btn btn-default">Search</button>
+				</div>
+
+			</div>
+
+		</div>
+
+ 	</section>
+	<!--Filters-->
+
+    <!--Cards-->
 	<section>
 		<div id="productsContainer">
 			<div class="container">
@@ -31,9 +75,36 @@
 										<img class="cardImg" src="{{product.img + '/' + product.id}}">
 									</div>
 
-								</div>		
+								</div>	
 
-								<h3>{{product.description}}</h3>
+								<div class="row text-center">
+									
+									<div class="col-xs-12">
+										<h3 class="cardProductName">{{product.name}}</h3>
+									</div>
+									
+								</div>	
+
+								
+								<div class="row text-center">
+									<div ><img ng-class=" { 'hidden' : !product.best_seller } " class="imgBest" src="../images/best.png"><div>
+									<div class="col-xs-12">
+										<div ng-class=" { 'stateCardAvailable' : product.available , 'stateCardNoAvailable': !product.available } " class="stateCard">
+											<h3>{{ (product.available)? 'Disponible' : 'No Disponible' }}</h3>
+										</div>
+									</div>
+									
+								</div>	
+
+								<div class="row text-center">
+									<h3 class="cardPrice">{{ '$' + product.price}}</h3>
+								</div>
+
+								<div class="row text-center">
+									<button id="btnDetail" type="submit" class="btn btn-default" data-toggle="modal" data-target="#myModal" ng-click="productDetail(product)">See</button>
+								</div>
+
+								
 							</div>
 						</div>
 					<!--/Card-->
@@ -41,6 +112,73 @@
 				</div>				
 			</div>
 		</div>
+	</section>
+	<!--/Cards-->
+
+	
+
+
+	<section id="sectionMaodal">
+		
+		 <!-- Modal -->
+			  <div class="modal fade" id="myModal" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">{{modalProduct.name}}</h4>
+			        </div>
+
+			        <div class="modal-body">
+			          
+			          <div class="row">
+			          	<div class="col-xs-12">
+			          		<img class="cardImg" src="{{modalProduct.img + '/' + modalProduct.id}}">
+			          	</div>
+			          </div>
+
+			          <div class="row">
+			          	<div class="col-xs-12">
+			          		<p class="modalDesc">{{modalProduct.description}}</p>
+			          	</div>
+			          </div>
+
+			        </div>
+
+
+			        <div class="row text-center">
+			          	
+			          	<div class="col-xs-5">
+			          		<h3 class="cardPriceModal">{{ modalProduct.TotalPrice | currency : "$" : 3}}</h3>
+			          	</div>
+
+			          	<div class="col-xs-7">
+			          		
+			          		<div id="modalUnitsTableContainer">
+			          		  <div class="row">
+
+			          		  	<div class="col-xs-2 col-left-units  col-units" ng-click="DownUnit()">-</div>	
+			          		  	<div class="col-xs-3 col-center-units ">{{modalProduct.units}}</div>	
+			          		  	<div class="col-xs-2 col-right-units col-units" ng-click="UpUnit()">+</div>			          		  	
+			          		  </div>
+			          		</div>
+			          		
+			          	</div>
+
+
+			          </div>
+
+			       
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>  
+
 	</section>
 
 </section>

@@ -1,0 +1,48 @@
+<section id="homeSection">	
+    
+    <!--HomeServiceOptions-->
+	<section>
+		<div id="homeTitle" class="sectionTitle">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-xs-12 text-center">
+						<h1 class="lblTitle">Products</h1>
+					<div class="col-xs-12">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--HomeServiceOptions-->
+
+	<section>
+		<div id="productsContainer">
+			<div class="container">
+				<div class="row text-center">
+					
+					<!--Card-->
+						<div ng-repeat="product in products" class="col-xs-12 col-md-6 col-lg-4">
+						
+							<div class="card">
+
+								<div class="row">
+									
+									<div class="col-xs-12">
+										<img class="cardImg" src="{{product.img + '/' + product.id}}">
+									</div>
+
+								</div>		
+
+								<h3>{{product.description}}</h3>
+							</div>
+						</div>
+					<!--/Card-->
+
+				</div>				
+			</div>
+		</div>
+	</section>
+
+</section>
+
+

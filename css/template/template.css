@@ -59,13 +59,24 @@ body{
 }
 
 #headerback{
-  background-color: gray;
+
   height: 100vh;
   width: 100%;
-  background-color: gray;
   position: absolute;
   left: 0px;
   top:0px;
+  background-color: rgba(0,0,0,0.5);
+
+}
+
+#headerbackChild{
+  position: absolute;
+  left: 0px;
+  top:0px;
+  background-image: URL("../../images/back02.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
 }
 
 #headerContent{
@@ -78,7 +89,7 @@ body{
 }
 
 #pageLogoTitleContainer{
-   height: 60vh;
+   height: 70vh;
    width: 100%;
    display: table;
    table-layout: fixed;
@@ -95,13 +106,27 @@ body{
    animation-duration: 0.5s;
    animation-name: titleAppear;
    margin: auto;
-   font-size: 80px;
-
+   font-size: 100px;
+   margin-top: 200px;
    transform:rotate(-7deg);
    -ms-transform:rotate(-7deg);
    -webkit-transform:rotate(-7deg);
-
 }
+
+
+#pageLogoTitleFooter{
+   font-family: 'Lobster', cursive;
+   animation-duration: 0.5s;
+   animation-name: titleAppear;
+   margin: auto;
+   font-size: 50px;
+   margin-top: 50px;
+   margin-bottom: 50px;  
+   transform:rotate(-7deg);
+   -ms-transform:rotate(-7deg);
+   -webkit-transform:rotate(-7deg);
+}
+
 
 #headerMenu{
   margin: 0;
@@ -127,7 +152,7 @@ body{
   animation-duration:0.5s;
   animation-name: linkAppear;
   animation-direction: alternate;
-  color:red;
+  color:#35DEFF;
   text-decoration: none;
 }
 
@@ -158,8 +183,8 @@ body{
 
 .imageFoodContainer{
   position: absolute;
-  height: 20%;
-  width: 20%;
+  height: 15%;
+  width: 15%;
 
 }
 
@@ -181,8 +206,8 @@ body{
 
 
 .imgFoodConatiner1_P1{
-  left: -100px;
-  top:-100px;
+  left: -200px;
+  top:-200px;
 
 }
 
@@ -201,10 +226,128 @@ body{
 
 .imgFoodConatiner2_P2{
   left: 70vw;
-  top: 15vh;
+  top: 10vh;
   -webkit-transition: left 0.5s , top 0.5s; /* For Safari 3.1 to 6.0 */
   transition: left 0.5s , top 0.5s;
 }
+
+.sectionTitle{
+  
+  width: 100%;
+  background-color: #2BBFDC;
+}
+
+.lblTitle{
+  font-size:50px;
+}
+
+.titlePart{
+  color: #2d2d2d;  
+  font-size: 60px;
+}
+
+.infoText{
+  padding: 10px;
+  color: #2d2d2d;
+  font-size: 30px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+
+#footerSection{
+  background-color: #2d2d2d;
+  padding: 20px;
+}
+
+#btn-suscribe{
+  
+  width: 100%;
+  height: 50px;
+
+}
+
+.btn-default{
+  color:white;
+  font-weight: bold;
+  font-size: 25px;
+  background-color:#237C8E;
+  border:solid 1px #237C8E;
+  -webkit-transition: background-color 1s , border 1s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 1s , border 1s;
+ 
+   
+}
+
+.btn-default:hover{ 
+  background-color:#2BBFDC;
+  border:solid 1px #2BBFDC;
+  color:white;
+}
+
+
+/**HomeSection***********************************/
+
+.homeTitleimgPadding{
+    padding: 20px;
+}
+
+.homeTitleImg{
+  width: 65%;
+  height: auto;
+}
+
+.homeSectionText{
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: -10px;
+}
+
+/**HomeSection***********************************/
+
+
+/**ProductsSection**/
+
+#productsContainer{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+
+
+.card{
+  width: 100%;
+  height: auto;
+  padding: 2px;
+  border:solid 1px #C3C4C4;
+  border-radius: 6px; 
+  margin-bottom: 20px; 
+  webkit-box-shadow: 9px 10px 19px -6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 9px 10px 19px -6px rgba(0,0,0,0.75);
+  box-shadow: 9px 10px 19px -6px rgba(0,0,0,0.75);
+
+   -webkit-transition: background-color 0.8s , color 0.3s;
+  transition: background-color 0.8s , color 0.3s;
+  
+  color:#2d2d2d;
+
+}
+
+.card:hover{
+  cursor: pointer;
+  background-color: #2BBFDC;   
+  color:white;
+
+}
+
+.cardImg{
+  width: 100%;
+  height: 100%;
+}
+
+/**ProductsSection**/
+
 
 
 /*Animations*/
@@ -213,7 +356,7 @@ body{
     font-size: 10px;
   }
   to {
-    font-size: 80px;
+    font-size: 100px;
   }
 }
 
@@ -222,7 +365,7 @@ body{
     color: white;
   }
   to {
-    color:red;
+    color:#35DEFF;
   }
 }
 
@@ -247,6 +390,7 @@ body{
       font-size: 60px;
     }
   }
+
 
   #iconMenuContainer{
     display: block;
@@ -281,6 +425,7 @@ body{
 
   #pageLogoTitle{
      font-size: 60px;
+     margin-top: 0px;
   }
 
   #pageLogoTitleContainer{

@@ -70,6 +70,12 @@ $window.ready(function(){
 
   });
 
-  setTimeout(function(){ initAnimations(); }, 250);
+  function init(){
+
+     setTimeout(function(){ initAnimations(); }, 250);
+
+  }
+ 
+  init();
 
 });

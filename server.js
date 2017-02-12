@@ -1,4 +1,6 @@
 var express = require('express');
+//var products = require('./data.json');
+var fs = require('fs');  
 var app = express();
 var port = process.env.PORT || 1337;
 
@@ -14,6 +16,25 @@ app.configure(function() {
     app.use(express.methodOverride());
 });
 
+var products = [];
+
+// Read the file and send to the callback
+fs.readFile('data/data.json', handleFile)
+
+// Write the callback function
+function handleFile(err, data) {
+    if (err) throw err
+    products = JSON.parse(data)
+    // You can now play with your datas
+}
+
+function Machine (nMachId,nMachDesc,nMachImg,nMachKm) { 
+    this.MachId = nMachId;
+    this.MachDesc = nMachDesc;
+    this.MachImg = nMachImg;
+    this.MachKm = nMachKm; 
+}
+
 
 // Start server
 var server = app.listen(port, function () {
@@ -21,3 +42,13 @@ var server = app.listen(port, function () {
 
    console.log("Example app listening at http://%s:%s", host, port)
 })
+
+
+/*API REST MACHINES****************************************************/
+
+/*GET*/
+app.get('/api/products', function (req, res) {
+
+    res.json(JSON.stringify(products));
+
+});   

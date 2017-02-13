@@ -32,6 +32,7 @@ body{
     width: 40px;
     left:80vw;
     top:86vh;
+    z-index: 98;
 }
 
 #imgScrollIcon{
@@ -394,6 +395,10 @@ body{
   display: none;
 }
 
+.shown{
+  display: block;
+}
+
 .cardPrice{
 
   font-size: 30px;
@@ -499,13 +504,113 @@ body{
 
 #btn-search{
   margin-top: 20px;
-  height: 40px;
+  height: 60px;
   font-weight: 25px;
   padding: 2px;
 }
 
+#pathSource{
+  height: 60px;
+}
+
+.pagination{
+  font-size: 25px;
+}
+
+.active{
+  background-color: #2BBFDC;
+}
+
 /**ProductsSection**/
 
+/*Side filter*/
+
+#sideFilter{
+  
+  color:black;
+    
+  border-radius: 4px;
+  margin: 0px;
+  padding: 0px;
+
+  margin-top: 10px;
+
+}
+
+.filterHeader{
+  background-color: #2bbfdc;
+  font-weight: bold;
+  padding: 0px;
+  margin: 0px;
+  padding: 2px;
+  color:white;
+}
+
+.filterHeader h3{
+  font-size: 40px;
+}
+
+.txtNameContainer{
+  padding: 2px;
+}
+
+.txtFilterControl{
+  height: 40px;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+/*Side filter*/
+
+/*CarShopp*/
+
+ #carShopp{
+  position: fixed;
+  height: 60px;
+  width: 70px;
+  left:0px;
+  top:85vh;
+  background-color: #237c8e ;
+  border:solid 2px #2bbfdc;
+  border-radius: 0 20px 20px 0;
+  margin-left: -10px;
+  padding: 5px;
+  z-index:99;
+
+  -webkit-transition: background-color 0.5s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 0.5s;
+
+ } 
+
+ #carShopp:hover{
+  background-color: #2bbfdc;
+  border:solid 2px #237c8e;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+ }
+
+
+
+ #imgCarShop{
+  height:40px;
+  width: 40px;
+  margin-left: 10px;
+  margin-top:5px;
+ }
+
+ #imgCarShop2{
+  
+  height:30px;
+  width: 30px;
+  
+ }
+
+ #myModal2{
+  color:black;
+ }
+
+
+/*CarShopp*/
 
 
 /*Animations*/

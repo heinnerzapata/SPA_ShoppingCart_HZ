@@ -21,28 +21,41 @@ mainApp.config(function($routeProvider , $locationProvider){
 
  });
 
+ mainApp.factory("productToBuy",function(){
 
- mainApp.controller('homeController',function homeController($scope,$http) {
-  
-    
+    function productToBuy(nId,nName,nImg,nPrice,nUnits) {
+      this.Id = nId;
+      this.name = nName;
+      this.img = nImg;
+      this.price = nPrice;
+      this.units = nUnits;
+    }
+
+    return productToBuy;
 
  });
 
- mainApp.controller('productsController',function productsController($scope,$http) {
-  
-    $scope.products =  [];    
-    $scope.categories =  []; 
-    $scope.modalProduct =  []; 
+ mainApp.controller('homeController',function homeController($scope,$http) {
+
+
+
+ });
+
+ mainApp.controller('productsController',function productsController($scope,$http,productToBuy) {
+
+    $scope.products =  [];
+    $scope.categories =  [];
+    $scope.modalProduct =  [];
     $scope.productSource = "local";
     $scope.externalPath = "";
     $scope.filterName = "";
     $scope.filterBest = "all";
     $scope.filterPriceRange = "all";
     $scope.filterOrderBy = 'name';
+
     $scope.carShopping = [];
 
     /*Filters*/
-
 
     $scope.filterAll=function(value) {
 
@@ -53,8 +66,6 @@ mainApp.config(function($routeProvider , $locationProvider){
       return res;
 
     }
-    
-
 
     $scope.filterCheckBestSeller=function(value) {
 
@@ -72,9 +83,8 @@ mainApp.config(function($routeProvider , $locationProvider){
 
     }
 
-
     $scope.filterCheckPriceRange=function(value) {
-      
+
       if($scope.filterPriceRange == "all")
       {
         return true;
@@ -82,58 +92,56 @@ mainApp.config(function($routeProvider , $locationProvider){
 
       if (  parseFloat(value.price) >= 30 && $scope.filterPriceRange == "30") {
         return true;
-      } 
+      }
 
       if (  parseFloat(value.price) <= 10 && $scope.filterPriceRange == "10") {
         return true;
       }
       else
       {
-        return false; 
-      }      
+        return false;
+      }
 
     }
 
-
     /*Filters*/
 
+    /*Functions*/
 
     $scope.addCarProduct = function(){
-      
-      var $idCurrrentProduct = $scope.modalProduct.id;
-      var isCurrentInCarShopping=false;
 
-      if($scope.carShopping.length > 0 ){
-        
-        alert($scope.carShopping[0].units);
-        alert($scope.carShopping.length);
+      var k = 0;
+      var isInList = false;
+      var noUnits = false;
+      var posArray = -1;
 
-      }
 
-      var i = 0;
-      var posId = 0;
-      var $prevCant = 0;
-      for(i = 0;i<$scope.carShopping.length;i++)
+      for(k = 0;k<$scope.carShopping.length;k++)
       {
-        if($scope.carShopping[i].id == $idCurrrentProduct)
+        if(parseInt($scope.carShopping[k].Id) == parseInt($scope.modalProduct.id))
         {
-          isCurrentInCarShopping = true;
-          $prevCant = parseInt($scope.carShopping[i].units);
-          //alert($scope.carShopping);
-          break;
+          posArray = k;
+          isInList = true;
+          noUnits = parseInt($scope.modalProduct.units);
+          k = $scope.carShopping.length + 1;
         }
+
       }
 
-      if(!isCurrentInCarShopping)
+      if(isInList)
       {
-        $scope.carShopping.push($scope.modalProduct);
+
+        $scope.carShopping[posArray].units = parseInt($scope.carShopping[posArray].units) + noUnits;
+
       }
-      else
-      {
-        $scope.carShopping[i].units = parseInt($prevCant) + parseInt($scope.modalProduct.units);
+      else {
+
+        $scope.carShopping.push(new productToBuy($scope.modalProduct.id,$scope.modalProduct.name,$scope.modalProduct.img + $scope.modalProduct.id ,$scope.modalProduct.price,parseInt($scope.modalProduct.units)));
+
       }
 
-   
+      $scope.modalProduct = [];
+
       $("#close-modal1").click();
 
     }
@@ -142,71 +150,66 @@ mainApp.config(function($routeProvider , $locationProvider){
             var $msg = document.getElementById("msg");
             if($msg.classList.contains("hidden"))
             {
-              $msg.classList.remove("hidden");     
+              $msg.classList.remove("hidden");
               $msg.classList.add("shown");
             }
     }
-
 
     $scope.HideMessage = function(){
             var $msg = document.getElementById("msg");
             if($msg.classList.contains("shown"))
             {
-              $msg.classList.remove("shown");     
+              $msg.classList.remove("shown");
               $msg.classList.add("hidden");
-            } 
+            }
     }
 
     $scope.getLoalProducts =  function(){
-     
-        $scope.products =  []; 
+
+        $scope.products =  [];
 
         $http.get("/api/products").then(function mySucces(response) {
-            
-            $scope.products = JSON.parse(response.data).products;  
+
+            $scope.products = JSON.parse(response.data).products;
             $scope.categories = JSON.parse(response.data).categories;
 
             $scope.HideMessage();
 
 
         }, function myError(response) {
-            
-            
+
+
             $scope.showMessage();
             //d.classList.add("otherclass");
 
-        
+
         });
-        
+
 
     }
 
-
     $scope.getExternProducts =  function(path){
-        
-        $scope.products =  []; 
+
+        $scope.products =  [];
 
         $http.get(path).then(function mySucces(response) {
-            
-            $scope.products = JSON.parse(response.data).products;  
-            $scope.categories = JSON.parse(response.data).categories;              
+
+            $scope.products = JSON.parse(response.data).products;
+            $scope.categories = JSON.parse(response.data).categories;
 
             $scope.HideMessage();
 
         }, function myError(response) {
-            
+
               $scope.showMessage();
-        
+
         });
 
 
     }
 
-
-    
-
     $scope.searchProducts =  function(path){
-      
+
       if($scope.productSource == "local")
       {
 
@@ -231,12 +234,12 @@ mainApp.config(function($routeProvider , $locationProvider){
     }
 
     $scope.productDetail = function(product){
-      
+
       $scope.modalProduct = product;
       $scope.modalProduct.units = 1;
       $scope.modalProduct.TotalPrice = parseFloat($scope.modalProduct.units) * parseFloat($scope.modalProduct.price);
       $scope.UpdatePrice();
-    } 
+    }
 
     $scope.UpdatePrice = function(){
       $scope.modalProduct.TotalPrice = parseFloat($scope.modalProduct.units) * parseFloat($scope.modalProduct.price);
@@ -253,8 +256,18 @@ mainApp.config(function($routeProvider , $locationProvider){
       if($scope.modalProduct.units - 1 >= 1){
        $scope.modalProduct.units--;
        $scope.UpdatePrice();
-      }      
+      }
     }
+
+    /*Functions*/
+
+
+    /*Factory*/
+
+
+
+    /*Factory*/
+
 
     $scope.init();
 

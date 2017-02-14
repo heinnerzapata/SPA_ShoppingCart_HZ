@@ -38,6 +38,14 @@ $window.ready(function(){
      menuAction();
   });
 
+  $("body").on("click","#headerMenu li",function(){
+     
+     menuAction();
+
+  });
+
+  
+ 
 
   $("body").on("click","#imgScrollIcon",function(){
     var scroll = $(window).scrollTop();

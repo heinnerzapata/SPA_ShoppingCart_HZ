@@ -37,7 +37,53 @@ mainApp.config(function($routeProvider , $locationProvider){
 
  mainApp.controller('homeController',function homeController($scope,$http) {
 
+    $scope.categories = [];
 
+    $scope.getLoalCategories =  function(){
+
+        
+        $http.get("/api/products").then(function mySucces(response) {
+
+            $scope.categories = JSON.parse(response.data).categories;         
+
+        }, function myError(response) {
+
+
+            //$scope.showMessage();
+            //d.classList.add("otherclass");
+
+        });
+
+
+    }
+
+    $scope.getCategoryImg = function(name){
+
+      var res = "../images/";
+      switch(name){
+        case "drinks" :{
+          res = res + "d.svg";
+          break;
+        }
+        case "lunch" :{
+          res = res + "c.svg";
+          break;
+        }
+        case "food" :{
+          res = res + "b.svg";
+          break;
+        }
+        case "sea" :{
+          res = res + "a.svg";
+          break;
+        }
+      }
+
+      return res;
+
+    }
+
+    $scope.getLoalCategories();
 
  });
 
@@ -53,9 +99,25 @@ mainApp.config(function($routeProvider , $locationProvider){
     $scope.filterPriceRange = "all";
     $scope.filterOrderBy = 'name';
 
+    $scope.categories = [];
+
     $scope.carShopping = [];
 
     /*Filters*/
+
+    $scope.licTotal=function(){
+
+      var res = 0;
+
+      var l = 0;
+      for(l=0;l<$scope.carShopping.length;l++)
+      {
+          res = res + (parseFloat( $scope.carShopping[l].price ) * parseFloat( $scope.carShopping[l].units ) * 1000);      
+      }
+
+      return res;
+
+    }
 
     $scope.filterAll=function(value) {
 
@@ -107,6 +169,14 @@ mainApp.config(function($routeProvider , $locationProvider){
     /*Filters*/
 
     /*Functions*/
+
+    $scope.clearShop = function(){
+      $scope.carShopping = [];
+    }
+
+    $scope.licProduct = function(price,units){
+      return (parseFloat(price) * parseFloat(units) * 1000); 
+    }
 
     $scope.addCarProduct = function(){
 
@@ -242,7 +312,7 @@ mainApp.config(function($routeProvider , $locationProvider){
     }
 
     $scope.UpdatePrice = function(){
-      $scope.modalProduct.TotalPrice = parseFloat($scope.modalProduct.units) * parseFloat($scope.modalProduct.price);
+      $scope.modalProduct.TotalPrice = parseFloat($scope.modalProduct.units) * parseFloat($scope.modalProduct.price) * 1000;
     }
 
     $scope.UpUnit = function(){

@@ -305,6 +305,34 @@ body{
   margin-top: -10px;
 }
 
+.catName{
+  color:black;
+  font-size: 30px;
+}
+
+.catBody{
+  width: 100%;
+  background-color: white;
+  border-radius: 100px; 
+  -webkit-transition: background-color 1s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 1s;
+
+}
+
+.catBody:hover{
+  background-color:#2BBFDC;
+  border-radius: 100px; 
+}
+
+#aboutUsSection{
+  margin-bottom: 20px;
+}
+
+.categoryItem{
+  cursor: pointer;
+  padding: 20px;
+}
+
 /**HomeSection***********************************/
 
 
@@ -608,6 +636,52 @@ body{
  #myModal2{
   color:black;
  }
+
+
+.CarShopProductName{
+  font-size: 20px;
+  font-weight: bold;
+  color: #2d2d2d;
+  text-transform: uppercase;
+}
+
+.CarShopProductLic{
+  font-size: 18px;
+  font-weight: bold;
+  color: #2d2d2d;
+  text-transform: uppercase;
+}
+
+.imgCarShop{
+  width: 100%;
+  height: auto;
+}
+
+#btn-carShop-close{
+  width: 40%;
+  height: 40px;
+}
+
+#btn-carShop-close2{
+  width: 40%;
+  height: 40px;
+}
+
+.last-row-carshop{
+  border-bottom: solid 1px #237c8e;
+  margin-right: 10px;
+
+}
+
+#licTotalLbl{
+  font-size: 30px;
+  color:#2d2d2d;  
+}
+
+#repaterShop{
+  max-height: 60vh;
+  overflow-y:auto;
+}
 
 
 /*CarShopp*/

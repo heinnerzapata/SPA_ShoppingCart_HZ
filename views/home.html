@@ -44,11 +44,28 @@
 	<div id="aboutUsSection">
 	 <div class="container">
 	 	<div class="row text-center">
-	 		<div class="col-xs-12">
-	 			<h1 class="titlePart">About us</h1>
-	 		</div>
-	 		<div class="col-xs-12">
-	 			<p class="infoText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vulputate gravida congue. Nulla facilisi. Maecenas eu elementum diam. In gravida, lorem vel bibendum varius, massa magna pretium sem, semper dignissim odio nibh ut lacus. Sed tincidunt nunc rutrum convallis tincidunt. Integer dui sem, semper at malesuada sit amet, venenatis sed turpis. Praesent in est nec urna porta facilisis quis nec orci. Aliquam erat volutpat. Duis posuere nulla fringilla leo rhoncus, at accumsan urna lacinia. Nullam et neque nec nibh maximus egestas sed vitae diam. Donec a sem dictum, auctor eros ac, molestie dui. Sed a ante sodales, aliquet nisi id, rhoncus mi. Sed feugiat mauris a ante hendrerit, a dictum tortor volutpat. Donec sed augue et dolor condimentum pellentesque eu id orci.</p>
+	 		
+	 		<div class="col-xs-12 text-center">
+	 			
+	 			<div class="row text-center">			
+	 			<div ng-repeat="category in categories" class="col-xs-12 col-lg-3 categoryItem">
+	 				
+	 				<div class="row text-center">
+	 				 <div class="col-xs-12">
+		 				<div class="catName">
+		 					{{category.name}}
+		 				</div>
+		 			 </div>
+		 			 <div class="col-xs-12">
+		 				<div class="catBody">
+		 					<img src="{{getCategoryImg(category.name)}}">
+		 				</div>
+		 			 </div>
+	 				</div>
+	 				
+	 			</div>
+	 			</div>
+
 	 		</div>
 	 	</div>
 

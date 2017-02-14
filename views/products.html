@@ -256,22 +256,46 @@
 			          <h4 class="modal-title">Shopping car</h4>
 			        </div>
 
-			        <div class="modal-body">
+			        <div class="modal-body" id="repaterShop">
 
-			          <div class="row">
+			          <div class="row text-center">
 			          	<div ng-repeat="product in carShopping" class="col-xs-12">
-			          		{{product.units}}
+
+			          	  <div class="col-xs-12">
+			          	  	<h3 class="CarShopProductName">{{product.name}}</h3>
+			          	  </div>
+
+						  <div class="col-xs-6 text-center">
+			          	  	<img class="imgCarShop" src="{{product.img}}">
+			          	  </div>
+
+			          	  <div class="last-row-carshop" class="col-xs-6 text-right">
+			          	  	<h4 class="CarShopProductLic">${{product.price}} x {{product.units}} = {{licProduct(product.price,product.units) | currency : "$" : 2}}</h4>
+			          	  </div>          		
+
 			          	</div>
+
+			          	<div id="licTotalLbl" class="col-xs-12 text-right">
+			          	  Total :	{{ licTotal() | currency : "$" : 2}}
+			          	</div>
+
 			          </div>
 
 
 			        </div>
 
-			        <div class="modal-footer">
+			        <div class="row">
 
-			      	  <input type="text" class="btn btn-default" data-dismiss="modal" value="Close" />
+			        <div class="modal-footer" class="col-xs-6 text-center">
 
-			          </div>
+			       		 <input id="btn-carShop-close2" type="text" class="btn btn-default" value="Clear" data-dismiss="modal" ng-click="clearShop()"  />
+
+			      	  <input id="btn-carShop-close" type="text" class="btn btn-default" data-dismiss="modal" value="Close" />
+
+
+			        </div>
+			        
+			        </div>
 
 			      </div>
 
@@ -314,7 +338,7 @@
 			        <div class="row text-center">
 
 			          	<div class="col-xs-5">
-			          		<h3 class="cardPriceModal">{{ modalProduct.TotalPrice | currency : "$" : 3}}</h3>
+			          		<h3 class="cardPriceModal">{{ modalProduct.TotalPrice | currency : "$" : 2}}</h3>
 			          	</div>
 
 			          	<div class="col-xs-7">
